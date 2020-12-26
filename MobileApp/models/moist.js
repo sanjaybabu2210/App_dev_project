@@ -1,4 +1,4 @@
-class Meal {
+class MoistSensor {
   constructor(
     id,
     imageUrl,
@@ -21,4 +21,4 @@ class Meal {
   }
 }
 
-export default Meal;
+export default MoistSensor;

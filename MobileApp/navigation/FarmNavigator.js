@@ -4,16 +4,14 @@ import {  createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import {Ionicons} from '@expo/vector-icons';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import CategoriesScreen from '../screens/CategoriesScreen';
+import SensorScreen from '../screens/SensorScreen';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { AntDesign } from '@expo/vector-icons'; 
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import HomeScreen from '../screens/HomeScreen';
-import CategoryMealsScreen from '../screens/CategoryMealsScreen';
-import MealDetailScreen from '../screens/MealDetailScreen';
+import MoistureDetail from '../screens/MoistureDetail';
 import Colors from '../constants/Colors';
-import FavoritesScreen from '../screens/FavoritesScreen';
-import FiltersScreen from '../screens/FiltersScreen';
+import MotorScreen from '../screens/MotorScreen';
 
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
 
@@ -32,15 +30,13 @@ const defaultStackNavOptions = {
     };
 
 
-const MealsNavigator = createStackNavigator(
+const MoistNavigator = createStackNavigator(
   {
     Categories: {
-      screen: CategoriesScreen
+      screen: SensorScreen
     },
-    CategoryMeals: {
-      screen: CategoryMealsScreen
-    },
-    MealDetail: MealDetailScreen
+   
+    MoistDetail: MoistureDetail
   },
   {
     // initialRouteName: 'Categories',
@@ -49,9 +45,9 @@ const MealsNavigator = createStackNavigator(
 );
 
 
-const FavNavigator = createStackNavigator({
-  Favourites: FavoritesScreen,
-  MealDetail: MealDetailScreen
+const MotorNavigator = createStackNavigator({
+  Favourites: MotorScreen,
+  MoistDetail: MoistureDetail
 },{
     // initialRouteName: 'Categories',
     defaultNavigationOptions: defaultStackNavOptions
@@ -67,13 +63,13 @@ const tabScreenConfig = {
     },
     tabBarColor: Colors.primaryColor
   }},
-   stats: {screen:MealsNavigator, navigationOptions: {
+   stats: {screen:MoistNavigator, navigationOptions: {
     tabBarIcon: (tabInfo) => {
       return <AntDesign name="barschart" size={25} color={tabInfo.tintColor} /> 
     },
     tabBarColor: Colors.primaryColor
   }},
-  Motor: { screen: FavNavigator, navigationOptions: {
+  Motor: { screen: MotorNavigator, navigationOptions: {
      tabBarIcon: (tabInfo) => {
       return <MaterialCommunityIcons name="water-pump" size={25} color={tabInfo.tintColor} />
     },
@@ -85,7 +81,7 @@ const tabScreenConfig = {
 }
 
 
-const MealsFavTabNavigator = createMaterialBottomTabNavigator(tabScreenConfig,{
+const SensorMainNavigator = createMaterialBottomTabNavigator(tabScreenConfig,{
   activeTintColor: 'white',
   shifting: true
 })
@@ -96,32 +92,32 @@ const MealsFavTabNavigator = createMaterialBottomTabNavigator(tabScreenConfig,{
 //   }
 // });
 
-const FilterNavigator = createStackNavigator({
-  Filters: FiltersScreen
-},{
-  // navigationOptions: {
-  //   drawerLabel: 'Filters'
-  // },
-  defaultNavigationOptions: defaultStackNavOptions
-})
+// const FilterNavigator = createStackNavigator({
+//   Filters: FiltersScreen
+// },{
+//   // navigationOptions: {
+//   //   drawerLabel: 'Filters'
+//   // },
+//   defaultNavigationOptions: defaultStackNavOptions
+// })
 
-const MainNavigator = createDrawerNavigator({
-      MealsFavs: {
-        screen: MealsFavTabNavigator,
-        navigationOptions :{
-          drawerLabel: 'Meals'
-        }
-      },
-      Filters:  FilterNavigator
-}, {
-  contentOptions: {
-    activeTintColor: Colors.accentColor,
-    labelStyle: {
-      fontFamily: 'open-sans-bold'
-    }
-  }
-})
+// const MainNavigator = createDrawerNavigator({
+//       MealsFavs: {
+//         screen: SensorMainNavigator,
+//         navigationOptions :{
+//           drawerLabel: 'Meals'
+//         }
+//       },
+//       Filters:  FilterNavigator
+// }, {
+//   contentOptions: {
+//     activeTintColor: Colors.accentColor,
+//     labelStyle: {
+//       fontFamily: 'open-sans-bold'
+//     }
+//   }
+// })
 
 
 
-export default createAppContainer(MainNavigator);
+export default createAppContainer(SensorMainNavigator);

@@ -31,14 +31,14 @@ const AppButtonmini2 = ( props ) => {
     <Text style={styles.appButtonText}>{props.title}</Text>
   </TouchableOpacity>
 };
-const MealDetailScreen = props => {
+const MoistDetailScreen = props => {
 
-  const values = useSelector(state =>state.meals.meals);
+  const values = useSelector(state =>state.meals.moistures);
 
   console.log(values ,"Fsfdfdsf") ;
-  const mealId = props.navigation.getParam('categoryId');
+  const sensId = props.navigation.getParam('categoryId');
 
-  const selectedMeal = Moisture.find(sensor => sensor.id === mealId);
+  const selectedMeal = Moisture.find(sensor => sensor.id === sensId);
 
   const dispatch = useDispatch();
 
@@ -52,14 +52,14 @@ const percentage = 66;
 
 
 
-  const toggleFavouriteHandler = useCallback(() =>{
-      dispatch(toggleFavourite(mealId));
-  },[dispatch, mealId]);
+  // const toggleFavouriteHandler = useCallback(() =>{
+  //     dispatch(toggleFavourite(mealId));
+  // },[dispatch, mealId]);
 
 
-  useEffect(()=>{
-    props.navigation.setParams({toggleFav: toggleFavouriteHandler});
-  },[toggleFavouriteHandler]);
+  // useEffect(()=>{
+  //   props.navigation.setParams({toggleFav: toggleFavouriteHandler});
+  // },[toggleFavouriteHandler]);
 
   return (
     
@@ -85,12 +85,10 @@ const percentage = 66;
   );
 };
 
-MealDetailScreen.navigationOptions = navigationData => {
-  // const mealId = navigationData.navigation.getParam('mealId');
+MoistDetailScreen.navigationOptions = navigationData => {
   
   const fieldTitle = navigationData.navigation.getParam('fieldTitle');
-  const toggleFavourite = navigationData.navigation.getParam('toggleFav');
-  // const selectedMeal = MEALS.find(meal => meal.id === mealId);
+  // const toggleFavourite = navigationData.navigation.getParam('toggleFav');
   return {
     headerTitle: "Field " + fieldTitle,
  
@@ -182,4 +180,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default MealDetailScreen;
+export default MoistDetailScreen;

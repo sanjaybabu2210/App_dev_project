@@ -10,9 +10,7 @@ import {
 import { Sensors } from '../data/dummy-data';
 import CategoryGridTile from '../components/CategoryGridTile';
 
-import {HeaderButtons, Item} from  'react-navigation-header-buttons';
 
-import HeaderButton from '../components/HeaderButton';
 
 const Statuscreen = props => {
   const renderGridItem = itemData => {
@@ -22,7 +20,7 @@ const Statuscreen = props => {
         color={itemData.item.color}
         onSelect={() => {
           props.navigation.navigate({
-            routeName: 'MealDetail',
+            routeName: 'MoistDetail',
             params: {
               categoryId: itemData.item.id,
               fieldTitle: (itemData.item.id).slice(-1)
@@ -46,12 +44,8 @@ const Statuscreen = props => {
 
 Statuscreen.navigationOptions = (navData)=> {
   return {
-headerTitle: 'Moisture Status',
-  headerLeft:( <HeaderButtons   HeaderButtonComponent={HeaderButton} >
-    <Item title="Menu" iconName = 'ios-menu' onPress={()=> {
-      navData.navigation.toggleDrawer();
-    }} />
-  </HeaderButtons>)
+headerTitle: 'Moisture Status'
+ 
   }
   
 };

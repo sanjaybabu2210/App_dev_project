@@ -1,5 +1,4 @@
 import React, { useEffect,useCallback } from 'react';
-import MealList from '../components/MealList';
 import {View, Text , StyleSheet} from 'react-native';
 // import { useSelector} from 'react-redux';
 import { Switch } from 'react-native-paper';
@@ -13,11 +12,11 @@ import * as valueActions from '../store/actions/farms'
 
 
 
-const FavoritesScreen = props => {
+const MotorSceen = props => {
 
   // const favMeals = useSelector(state => state.meals.favouriteMeals);
 
- const values = useSelector(state =>state.meals.meals);
+  const values = useSelector(state =>state.meals.moistures);
 
   console.log(values ,"Fsfdfdsf") ;
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
@@ -102,7 +101,7 @@ const FavoritesScreen = props => {
 
 
 
-FavoritesScreen.navigationOptions = navData=> {
+MotorSceen.navigationOptions = navData=> {
   return {
 headerTitle: 'Motor Control',
   headerLeft:( <HeaderButtons   HeaderButtonComponent={HeaderButton} >
@@ -157,4 +156,4 @@ const styles = StyleSheet.create({
   }
 
 });
-export default FavoritesScreen;
+export default MotorSceen;

@@ -6,9 +6,7 @@ import { TOGGLE_FAVOURITE , SET_VALUES } from '../actions/farms';
 
 
 const initialState = {
-    meals: [] ,
-    filteredMeals: [] ,
-    favouriteMeals: []
+    moistures: [] 
 };
 
 
@@ -19,24 +17,22 @@ const farmReducer = (state = initialState, action) => {
 
         case SET_VALUES:
             return {
-                 meals: action.values ,
-    filteredMeals: action.values ,
-        favouriteMeals: []
+                 moistures: action.values 
 
             }
 
 
-        case TOGGLE_FAVOURITE:
-            const existingIndex =  state.favouriteMeals.findIndex(meal => meal.id === action.mealId);
-            if(existingIndex>=0){
+        // case TOGGLE_FAVOURITE:
+        //     const existingIndex =  state.favouriteMeals.findIndex(meal => meal.id === action.mealId);
+        //     if(existingIndex>=0){
 
-                const updatedFavMeals = [...state.favouriteMeals];
-                updatedFavMeals.splice(existingIndex, 1);
-                return {...state, favouriteMeals:updatedFavMeals };
-            }else{
-                const meal = state.meals.find(meal=> meal.id ===action.mealId);
-                return {...state,favouriteMeals: state.favouriteMeals.concat(meal)};
-            }
+        //         const updatedFavMeals = [...state.favouriteMeals];
+        //         updatedFavMeals.splice(existingIndex, 1);
+        //         return {...state, favouriteMeals:updatedFavMeals };
+        //     }else{
+        //         const meal = state.meals.find(meal=> meal.id ===action.mealId);
+        //         return {...state,favouriteMeals: state.favouriteMeals.concat(meal)};
+        //     }
         default:
             return state;
     }
