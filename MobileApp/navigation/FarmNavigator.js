@@ -12,6 +12,7 @@ import HomeScreen from '../screens/HomeScreen';
 import MoistureDetail from '../screens/MoistureDetail';
 import Colors from '../constants/Colors';
 import MotorScreen from '../screens/MotorScreen';
+import SensorGraph from '../screens/SensorGraph';
 
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
 
@@ -32,10 +33,10 @@ const defaultStackNavOptions = {
 
 const MoistNavigator = createStackNavigator(
   {
-    Categories: {
-      screen: SensorScreen
-    },
-   
+    Categories: SensorScreen,
+    
+     GraphStats: SensorGraph,
+
     MoistDetail: MoistureDetail
   },
   {

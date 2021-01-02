@@ -20,10 +20,10 @@ const CategoryGridTile = props => {
     <View style={styles.gridItem}>
       <TouchableCmp style={{ flex: 1 }} onPress={props.onSelect}>
         <View
-          style={[styles.container, { backgroundColor: props.color } ]}
+          style={[styles.container, { backgroundColor: "#5a854d" } ]}
         >
           <View  style={styles.icon}>
-          <Entypo name="pie-chart" size={84} color="cyan" />
+          <Entypo name="pie-chart" size={84} color="#183939" />
 
           </View>
           <Text style={styles.title} numberOfLines={2}>

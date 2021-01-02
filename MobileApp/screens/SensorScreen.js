@@ -52,8 +52,9 @@ headerTitle: 'Moisture Status'
 
 const styles = StyleSheet.create({
   screen: {
-   
-    marginTop: 70
+    backgroundImage: "url('https://i.pinimg.com/originals/46/da/c9/46dac9351feab803ccd7b4b57f17dca5.jpg')",
+    backgroundSize: "cover",
+    paddingTop: 70
   }
 });
 

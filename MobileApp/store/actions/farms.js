@@ -24,13 +24,34 @@ export const fetchvalues = () => {
       
         var Obj1 = resData["1_Humidity"];
                 var Obj2 = resData["2_Moisture level"];
-        var Obj3 = resData["3_Tempreature C"];
+        var Obj3 = resData["3_Temperature C"];
         var Obj4 = resData["4_Temperature F"];
+        var result1 = [];
+                var result2 = [];
 
+                        var result3 = [];
 
-var result1 = Obj1[Object.keys(Obj1)[Object.keys(Obj1).length-1]] 
-var result2 = Obj2[Object.keys(Obj2)[Object.keys(Obj2).length-1]] 
-var result3 = Obj3[Object.keys(Obj3)[Object.keys(Obj3).length-1]] 
+       
+
+for(var i=1;i<10;i++){
+     var val1 =  Obj1[Object.keys(Obj1)[Object.keys(Obj1).length-i]] 
+     result1.push(val1);
+
+}
+for(var i=1;i<10;i++){
+     var val1 =  Obj2[Object.keys(Obj2)[Object.keys(Obj2).length-i]] 
+     result2.push(val1);
+
+}
+for(var i=1;i<10;i++){
+     var val1 =  Obj3[Object.keys(Obj3)[Object.keys(Obj3).length-i]] 
+     result3.push(val1);
+
+}
+
+ console.log(result1,result2,result3,"valss")
+// var result2 = Obj2[Object.keys(Obj2)[Object.keys(Obj2).length-1]] 
+// var result3 = Obj3[Object.keys(Obj3)[Object.keys(Obj3).length-1]] 
 var result4 = Obj4[Object.keys(Obj4)[Object.keys(Obj4).length-1]] 
 
         // loadedValues.push( new Moisture("c1","https://images.unsplash.com/photo-1515150144380-bca9f1650ed9?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OHx8Z2FyZGVufGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", result1,result2,result3,result4));

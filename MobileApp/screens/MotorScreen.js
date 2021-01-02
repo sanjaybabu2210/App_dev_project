@@ -1,4 +1,4 @@
-import React, { useEffect,useCallback } from 'react';
+import React, { useEffect,useCallback,useState } from 'react';
 import {View, Text , StyleSheet} from 'react-native';
 // import { useSelector} from 'react-redux';
 import { Switch } from 'react-native-paper';
@@ -24,8 +24,9 @@ const MotorSceen = props => {
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
 
   const dispatch = useDispatch();
-  const vals = values[2]/100;
-  var val = 0.36;
+  // const vals = values[2]/100;
+  var vals = 0.36;
+  var val;
   if(parseFloat(vals/100)=== 0.36){
       console.log(true);
   }
@@ -40,17 +41,45 @@ const MotorSceen = props => {
     dispatch( valueActions.fetchvalues());
   },[dispatch]);
 
+  const [status, setstate] = useState(0);
 
+  const submitHandler = useCallback(() => {
+   
+    if (status == 0) {
+      dispatch(
+        valueActions.toggler(
+         "false"
+        )
+      );
+              setstate(1);
+
+      console.log(status);
+    } else {
+      dispatch(
+        valueActions.toggler(
+          "true"
+        )
+      );
+              setstate(0);
+
+            console.log(status);
+
+    }
+    props.navigation.goBack();
+  }, [dispatch, status]);
+
+  useEffect(() => {
+  }, [submitHandler]);
 
 
   return (
-    <View>
+    <View style={styles.main}>
   <View style={styles.major}>
                 <Text style={styles.text}>Motor Control</Text>
 
 <View style={styles.progress1}>
 
-               <Switch value={isSwitchOn} onValueChange={onToggleSwitch}  />
+               <Switch value={status} onValueChange={submitHandler}  />
 </View>
     </View>
     <View style={styles.status}>
@@ -59,7 +88,7 @@ const MotorSceen = props => {
 
                 </View>
                 <View style={styles.progress}>
-              <ProgressBar progress={val}  color="green"></ProgressBar>
+              <ProgressBar progress={0.62}  color="green"></ProgressBar>
 
                 </View>
     </View>
@@ -122,7 +151,7 @@ const styles = StyleSheet.create({
         marginTop: 15,
             paddingHorizontal: 20,
     paddingVertical: 40,
-    backgroundColor: "pink",
+    backgroundColor: "#005B00",
     borderRadius: 10
   },
   
@@ -133,7 +162,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
         marginTop: 15,
-    backgroundColor: "#E4E7F7",
+    backgroundColor: "#4e9c81",
     borderRadius: 10
   },
   text: {
@@ -153,6 +182,12 @@ const styles = StyleSheet.create({
     right: 40,
     height: 40,
     marginVertical: 20
+  },
+   main : {
+    backgroundImage: "url('https://i.pinimg.com/originals/46/da/c9/46dac9351feab803ccd7b4b57f17dca5.jpg')",
+    backgroundSize: "cover",
+        height: "110vh"
+
   }
 
 });

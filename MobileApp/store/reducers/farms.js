@@ -1,6 +1,6 @@
 
 import {Moisture} from '../../data/dummy-data';
-import { TOGGLE_FAVOURITE , SET_VALUES } from '../actions/farms';
+import { TOGGLE_SWITCH , SET_VALUES } from '../actions/farms';
 
 
 
@@ -18,6 +18,11 @@ const farmReducer = (state = initialState, action) => {
         case SET_VALUES:
             return {
                  moistures: action.values 
+
+            }
+         case TOGGLE_SWITCH:
+            return {
+                 status: action.state 
 
             }
 
